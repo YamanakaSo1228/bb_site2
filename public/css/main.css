@@ -1,0 +1,662 @@
+img {
+  /* vertical-align: middle; */
+  width: 100%;
+}
+
+/*FontAwesomeを使用しています。*/
+.header-7 {
+  box-sizing: border-box;
+  width: 100%;
+  height: 120px;
+}
+
+.box {
+  box-sizing: border-box;
+}
+
+/* ========== header ========== */
+.box-logo {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  /* height: 80px; */
+}
+
+.logo-img {
+  width: 100px;
+}
+
+
+
+/* ========== nav ========== */
+.box-nav {
+  width: 100%;
+  height: 40px;
+  background: #131aff;
+}
+
+.inner-nav {
+  display: flex;
+  justify-content: center;
+  max-width: 1024px;
+  padding: 0;
+  margin: 0 auto;
+  line-height: 40px;
+  list-style: none;
+  background: #0067ff;
+}
+
+
+/* ========== sp ========== */
+@media screen and (max-width: 480px) {
+  .header-7 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 0.8em;
+  }
+
+  .box-nav {
+    display: none;
+  }
+
+  .sp-nav {
+    display: block;
+  }
+
+  .box-logo {
+    height: 60px;
+  }
+
+  .logo-img {
+    width: 70px;
+  }
+}
+
+.footer-002 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px 10px 10px;
+  background-color: #2578d0;
+}
+
+.footer-002__logo {
+  width: 130px;
+  height: 30px;
+}
+
+.footer-002__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 1.5em;
+  list-style-type: none;
+  margin: 0 0 .5em;
+  padding: .5em;
+}
+
+.footer-002__sns-icon {
+  width: 21px;
+  height: 21px;
+}
+
+.footer-002__copyright {
+  margin: 0;
+  color: #ffffffb3;
+  font-weight: 200;
+  font-size: .8em;
+}
+
+table.score-table.border {
+  margin: 0 auto;
+  margin-top: 30px;
+  white-space: nowrap;
+}
+
+table.score-table.border.tabel-edit {
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.footer-002 {
+  margin-top: 50px;
+}
+
+/* 画像上のメッセージテキスト */
+.image-text {
+  background-color: white;
+}
+
+.player-information {
+  margin-bottom: 30px;
+}
+
+/* 試合結果のもっと見るボタンの調整 */
+a.btn.btn-primary.game-detail {
+  margin-top: 20px;
+  width: 30%;
+}
+
+/* チーム紹介文を編集 */
+h1.text-center.text-blue {
+  color: blue;
+}
+
+.p-3.text-center {
+  background-color: #fff;
+}
+
+h2.knbn-title {
+  color: #ff0505;
+}
+
+h2.knbn-title {
+  position: relative;
+  padding: 1rem 2rem calc(1rem + 10px);
+  background: #fffb00;
+}
+
+h2.knbn-title:before {
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  width: 100%;
+  height: 100%;
+  content: '';
+  border: 4px solid #000;
+}
+
+
+/* 選手募集中看板の上のmaegin */
+.p-3.text-center {
+  margin-top: 50px;
+}
+
+/* 管理者情報の表示を縦並びに修正 */
+.ms-auto.admin-info {
+  display: grid;
+}
+
+/* 試合結果編集ボタンのサイズ・位置調整 */
+button.btn.btn-primary.edit-link {
+  width: 30%;
+}
+.game-comment {
+  word-wrap: break-word;
+}
+
+
+/* 試合結果一覧の新規登録ボタンの配置設定 */
+.game-create {
+  margin-right: 12%;
+}
+
+/* 試合結果編集画面のチーム名改行対策 */
+.no-wrap {
+  white-space: nowrap;
+}
+
+/* 画像サイズの調整（仮） */
+.admin-player {
+  width: 50%;
+}
+
+/* 選手画像の編集 */
+.visitor-player {
+  width: 100%;
+}
+
+/* ホーム画像サイズの調整 */
+.home-image {
+  width: 100%;
+}
+
+/* ホーム画像上の文言位置修正 */
+.image-text.position-absolute.top-50.start-50.translate-middle.text-center {
+  margin-top: 20%;
+  background: #ffffff80;
+  margin-left: 0px;
+}
+
+.sp-image-text {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .image-text.position-absolute.top-50.start-50.translate-middle.text-center {
+    display: none;
+  }
+
+  .sp-image-text {
+    display: block;
+      display: block;
+      background: rgb(13 17 244 / 76%);
+      color: #ffffff;
+  }
+}
+
+/* 選手募集中看板の修正 */
+.p-3.text-center.centered-content {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 80%;
+  border: 5px solid #91ff8a;
+    background: radial-gradient( circle 200px at center, #57f6fe 0%, #30c7ec 50%, #46aef7 100% );
+}
+
+/* ヘッダーデザイン */
+@import url(https://reset5.googlecode.com/hg/reset.min.css);
+@import url(https://fonts.googleapis.com/css?family=Slabo+27px|Open+Sans);
+
+body {
+  background: #997C7A;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  background: rgb(13 54 244 / 79%);
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  transition: height 0.3s;
+  z-index: 1000;
+}
+
+.header .wrap {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 69em;
+}
+
+.header h1,
+.header .menu {
+  display: inline-block;
+  position: relative;
+}
+
+.header h1,
+.header .menu a {
+  line-height: 140px;
+}
+
+.header h1 {
+  float: left;
+  margin: 0;
+  color: #002efe;
+  ;
+  font-family: "Slabo 27px", serif;
+  font-size: 72px;
+  text-transform: uppercase;
+  -webkit-text-stroke: 2px #ff5d00;
+}
+
+.menu-list {
+  margin-left: 5%;
+  width: 100%;
+}
+
+.pc-wrap h1 {
+  margin-left: 5%;
+}
+
+
+
+@media (max-width: 768px) {
+
+  /* スマートフォン用のスタイルをここに記述 */
+  /* 520px以下の時に使用するCSSを記載  */
+  .header .wrap {
+    display: none;
+  }
+
+  .header h1 {
+    float: left;
+    margin: 0;
+    color: #002efe;
+    font-family: "Slabo 27px", serif;
+    font-size: 36px;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px #ff5d00;
+
+  }
+
+  div#nav-wrapper {
+    position: relative;
+    /* 必要に応じて、要素を相対位置に設定します。 */
+    z-index: 9999;
+    /* 他の要素よりも大きな値を指定します。 */
+    display: block;
+  }
+
+  .header {
+    height: 100px;
+    width: 100%;
+  }
+
+  .header-margin {
+    margin-top: 81px !important;
+  }
+
+  .score-table-container {
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  .header.shrink h1,
+  .header.shrink nav a {
+    line-height: initial;
+  }
+
+  .pc-wrap {
+    display: none;
+  }
+
+  /* ハンバーガーメニューのマージン開け */
+  i.hamburger-list {
+    margin-top: 20px;
+  }
+
+  /* 選手成績テーブルのスマホ対応 */
+  table.table.table-striped.player-pc {
+    display: none;
+  }
+
+  .talk-Ltxt {
+    margin-left: 20%;
+}
+.talk-Rtxt {
+  margin-left: 30%;
+}
+
+.result-image img {
+  width: 100%;
+  height: 200px;
+  /* 高さを200pxに設定 */
+  object-fit: cover;
+}
+
+}
+
+@media (max-width: 982px) {
+  .menu-list {
+    display: none;
+  }
+}
+
+@media (min-width: 982px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+
+  /* 選手成績テーブルのスマホ対応 */
+  table.table.table-striped.player-sp {
+    display: none;
+  }
+
+  /* 選手成績テーブルのスマホ対応 */
+  table.table.table-striped.player-sp {
+    display: none;
+  }
+
+  h1.sp-header {
+    display: none;
+  }
+  .result-image img {
+    height: 400px;
+}
+
+}
+
+.header .menu a {
+  margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.header .menu a:last-of-type {
+  margin-right: 0;
+}
+
+/* Shrinking */
+.header h1,
+.header nav a {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.header.shrink {
+  height: 90px;
+}
+
+.header.shrink h1,
+.header.shrink nav a {
+  line-height: 90px;
+}
+
+.header.shrink h1 {
+  font-size: 2em;
+}
+
+.header-margin {
+  margin-top: 140px;
+}
+
+/* ホーム画面の背景色指定 */
+.container-fluid.bg-blue {
+  background-image: url(istockphoto-1075877764-1024x1024.jpg);
+}
+
+.container.inquiry {
+  /* background: #0092ffc2; */
+  border: 5px solid #91ff8a;
+  background: radial-gradient( circle 200px at center, #57f6fe 0%, #30c7ec 50%, #46aef7 100% );
+}
+
+/* 試合結果スマホ */
+@media (max-width: 768px) {
+
+  /* スコアテーブルのコンテナに対してスクロールバーを追加 */
+  .score-container {
+    overflow: hidden;
+    /* テーブル外の要素をはみ出さないようにするため */
+    width: 100%;
+    /* 幅を100%に設定 */
+  }
+
+  /* テーブルを囲む <div> に対してスクロールバーを追加 */
+  .table-wrapper {
+    overflow-x: auto;
+    /* 横スクロールバーを表示 */
+    width: 100%;
+    /* 幅を100%に設定 */
+  }
+
+  /* スコアテーブルのスタイル */
+  .score-table {
+    min-width: 100%;
+    /* テーブルの最小幅を100%に設定 */
+  }
+
+  .nowrap {
+    white-space: nowrap;
+  }
+
+  .btn.btn-primary.game-detail {
+    margin-top: 20px;
+    width: initial !important;
+  }
+
+  /* その他のスタイルやカスタマイズは必要に応じて追加 */
+
+}
+
+h1.game-result {
+  color: #f8f9fa;
+    /* -webkit-text-stroke: 1px #ff5d00; */
+    /* font-weight: bold; */
+    background: linear-gradient(to right, #27a4ff, #00116b);
+    width: 70%;
+    margin: 20px auto;
+    padding: 5px;
+}
+
+h2.notice {
+  color: #ffffff;
+  background: linear-gradient(to right, #27a4ff, #00116b);
+  padding: 10px;
+}
+
+.btn-box {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+table.admin-score-table.border {
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 60%;
+}
+
+.d-flex.justify-content-center.mb-3 {
+  margin-top: 30px;
+}
+
+body {
+  background-color: #0024ff;
+}
+
+.result-image {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  /* 画像を横いっぱいに表示 */
+}
+
+
+
+.result-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  /* 背景の半透明黒 */
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.score-container {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.game-comment {
+  margin-left: 7%;
+  word-wrap: break-word;
+}
+
+.opponent-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-left: 10%;
+}
+
+.score-table {
+  width: 80%;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.score-table th, .score-table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.game-detail {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.p-3.text-center.centered-content p {
+  color: #f8f9fa;
+    font-size: 20px;
+}
+@media (max-width: 768px) {
+  .p-3.text-center.centered-content p {
+    word-wrap: break-word;
+
+  }
+
+
+}
+
+ /* テーブル全体に枠線を追加 */
+ table {
+  border-collapse: collapse; /* セル間の間隔を調整 */
+  width: 100%; /* テーブル幅を100%に設定 */
+  border: 2px solid #000; /* テーブル全体の枠線を設定 */
+}
+
+/* テーブルのヘッダーセルに枠線を追加 */
+.game-result th {
+  border: 2px solid #000; /* ヘッダーセルの枠線を設定 */
+  padding: 8px; /* セル内の余白を調整 */
+}
+
+/* テーブルのデータセルに枠線を追加 */
+.game-result td {
+  border: 2px solid #000; /* データセルの枠線を設定 */
+  padding: 8px; /* セル内の余白を調整 */
+}
+
+h1.my-4 {
+  text-align: center;
+    font-size: 30px;
+    background: linear-gradient(to right, #27a4ff, #00116b);
+    margin: 20px 0;
+    color: white;
+    padding: 5px;
+}
+
+
+h3.opponent-header {
+  color: #000000;;
+  font-weight: bold;
+  position: relative;
+  padding: 1rem 2rem calc(1rem + 10px);
+  background: #00d7ff;
+}
+
+h3.opponent-header:before {
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  width: 100%;
+  height: 100%;
+  content: '';
+  border: 4px solid #000;
+}
+
+  .hidden {
+    display: none;
+  }
