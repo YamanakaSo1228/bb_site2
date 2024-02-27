@@ -1,5 +1,6 @@
 @extends('layouts.admin_layout')
 <link rel="stylesheet" href="{{ asset('/css/sidebars.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/main.css') }}">
 
 @section('title','チーム紹介')
 @section('content')
@@ -46,7 +47,7 @@
     </p>
   </div>
   <div class="notice-content text-center">
-    <p class="notice-text">{{ $teams[0]->team_text }}</p>
+    <p class="notice-text">{!! $teams[0]->team_text !!}</p>
   </div>
 </div>
 <div class="text-center">

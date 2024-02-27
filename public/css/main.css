@@ -1,3 +1,8 @@
+p {
+  /* 全ての改行を表示 */
+  white-space: pre-wrap !important;
+}
+
 img {
   /* vertical-align: middle; */
   width: 100%;
