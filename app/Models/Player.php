@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Controllers\AdminPlayerController;
-
 
 class Player extends Model
 {
@@ -15,12 +13,12 @@ class Player extends Model
     {
         return $this->belongsTo(Player::class, 'player_id', 'id');
     }
-    //テーブル名
+
+    // テーブル名
     protected $table = 'players';
 
-    //可変項目
-    protected $fillable =
-    [
+    // 可変項目
+    protected $fillable = [
         'position',
         'avg',
         'era',
@@ -37,6 +35,24 @@ class Player extends Model
         'conceded_points',
         'pitched',
         'image',
+        'at_bats',
+        'runs',
+        'stolen_bases',
+        'doubles',
+        'triples',
+        'ops',
+        'walks',
+        'sacrifice_hits',
+        'sacrifice_flies',
+        'wins',
+        'losses',
+        'winning_percentage',
+        'complete_games',
+        'shutouts',
+        'hits_allowed',
+        'home_runs_allowed',
+        'strikeouts',
+        'walks_allowed',
     ];
 
     public function games()
