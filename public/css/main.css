@@ -117,7 +117,6 @@ img {
 table.score-table.border {
   margin: 0 auto;
   margin-top: 30px;
-  white-space: nowrap;
 }
 
 table.score-table.border.tabel-edit {
@@ -492,8 +491,8 @@ body {
     /* テーブルの最小幅を100%に設定 */
   }
 
-  .nowrap {
-    white-space: nowrap;
+  td.nowrap {
+    width: 200px !important;
   }
 
   .btn.btn-primary.game-detail {
@@ -626,6 +625,10 @@ body {
 .game-result th {
   border: 2px solid #000; /* ヘッダーセルの枠線を設定 */
   padding: 8px; /* セル内の余白を調整 */
+}
+
+td.nowrap {
+  width: 30%;
 }
 
 /* テーブルのデータセルに枠線を追加 */
