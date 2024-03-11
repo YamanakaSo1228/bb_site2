@@ -1,18 +1,16 @@
 @extends('layouts.admin_layout')
 <link rel="stylesheet" href="{{ asset('/css/sidebars.css') }}">
 
-@section('title','選手編集')
+@section('title','選手登録')
 @section('content')
 
-
 <x-alert type="success" :session="session('success')" />
+
 <!-- メインコンテンツ -->
 <div class="container">
     <h2>選手情報登録</h2>
-    <form method="POST" action="{{ route('admin.player.update') }}" onSubmit="return checkSubmit()" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.player.store') }}" onSubmit="return checkSubmit()" enctype="multipart/form-data">
         @csrf
-
-        <input type="hidden" name="id" value="{{ $player->id }}">
 
         <div class="form-group">
             <label for="position">ポジション</label>
@@ -123,6 +121,46 @@
         @endif
 
         <div class="form-group">
+            <label for="ops">OPS</label>
+            <input type="number" step="0.001" name="ops" class="form-control" value="{{ $player->ops }}">
+        </div>
+        @if ($errors->has('ops'))
+        <div class="text-danger">
+            {{ $errors->first('ops') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="walks">四死球</label>
+            <input type="number" name="walks" class="form-control" value="{{ $player->walks }}">
+        </div>
+        @if ($errors->has('walks'))
+        <div class="text-danger">
+            {{ $errors->first('walks') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="sacrifice_hits">犠打</label>
+            <input type="number" name="sacrifice_hits" class="form-control" value="{{ old('sacrifice_hits') }}">
+        </div>
+        @if ($errors->has('sacrifice_hits'))
+        <div class="text-danger">
+            {{ $errors->first('sacrifice_hits') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="sacrifice_flies">犠飛</label>
+            <input type="number" name="sacrifice_flies" class="form-control" value="{{ $player->sacrifice_flies }}">
+        </div>
+        @if ($errors->has('sacrifice_flies'))
+        <div class="text-danger">
+            {{ $errors->first('sacrifice_flies') }}
+        </div>
+        @endif
+
+        <div class="form-group">
             <label for="game_count">試合数</label>
             <input type="number" name="game_count" class="form-control" value="{{ $player->game_count }}">
         </div>
@@ -176,68 +214,136 @@
             {{ $errors->first('pitched') }}
         </div>
         @endif
+
+        <div class="form-group">
+            <label for="created_at">作成日時</label>
+            <input type="text" name="created_at" class="form-control" value="{{ old('created_at') }}" readonly>
+        </div>
+        @if ($errors->has('created_at'))
+        <div class="text-danger">
+            {{ $errors->first('created_at') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="updated_at">更新日時</label>
+            <input type="text" name="updated_at" class="form-control" value="{{ old('updated_at') }}" readonly>
+        </div>
+        @if ($errors->has('updated_at'))
+        <div class="text-danger">
+            {{ $errors->first('updated_at') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="wins">勝利数</label>
+            <input type="number" name="wins" class="form-control" value="{{ $player->wins }}">
+        </div>
+        @if ($errors->has('wins'))
+        <div class="text-danger">
+            {{ $errors->first('wins') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="losses">敗北数</label>
+            <input type="number" name="losses" class="form-control" value="{{ $player->losses }}">
+        </div>
+        @if ($errors->has('losses'))
+        <div class="text-danger">
+            {{ $errors->first('losses') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="winning_percentage">勝率</label>
+            <input type="number" step="0.001" name="winning_percentage" class="form-control" value="{{ number_format($player->winning_percentage, 2, '.', '') }}" readonly>
+        </div>
+        @if ($errors->has('winning_percentage'))
+        <div class="text-danger">
+            {{ $errors->first('winning_percentage') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="complete_games">完投数</label>
+            <input type="number" name="complete_games" class="form-control" value="{{ $player->complete_games }}">
+        </div>
+        @if ($errors->has('complete_games'))
+        <div class="text-danger">
+            {{ $errors->first('complete_games') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="shutouts">完封数</label>
+            <input type="number" name="shutouts" class="form-control" value="{{ $player->shutouts }}">
+        </div>
+        @if ($errors->has('shutouts'))
+        <div class="text-danger">
+            {{ $errors->first('shutouts') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="hits_allowed">被安打数</label>
+            <input type="number" name="hits_allowed" class="form-control" value="{{ $player->hits_allowed }}">
+        </div>
+        @if ($errors->has('hits_allowed'))
+        <div class="text-danger">
+            {{ $errors->first('hits_allowed') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="home_runs_allowed">被本塁打数</label>
+            <input type="number" name="home_runs_allowed" class="form-control" value="{{ $player->home_runs_allowed }}">
+        </div>
+        @if ($errors->has('home_runs_allowed'))
+        <div class="text-danger">
+            {{ $errors->first('home_runs_allowed') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="strikeouts">奪三振数</label>
+            <input type="number" name="strikeouts" class="form-control" value="{{ $player->strikeouts }}">
+        </div>
+        @if ($errors->has('strikeouts'))
+        <div class="text-danger">
+            {{ $errors->first('strikeouts') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="walks_allowed">与四球数</label>
+            <input type="number" name="walks_allowed" class="form-control" value="{{ $player->walks_allowed }}">
+        </div>
+        @if ($errors->has('walks_allowed'))
+        <div class="text-danger">
+            {{ $errors->first('walks_allowed') }}
+        </div>
+        @endif
+
         <div class="form-group">
             <label for="image">選手画像</label>
-            <div class="custom-file">
-                <input type="file" name="image" class="custom-file-input" id="image" accept="image/*">
-                <label class="custom-file-label" for="image">ファイルを選択してください</label>
-            </div>
+            <input type="file" name="image" class="form-control-file">
         </div>
 
-        <!-- 現在の画像名を表示 -->
-        <p id="currentImage">
-            @if ($player->image)
-            現在の画像: {{ $player->image }}
-            @else
-            現在の画像はありません。
-            @endif
-        </p>
-
-        <button type="submit" class="btn btn-primary">更新</button>
+        <button type="submit" class="btn btn-primary">登録</button>
         <a href="javascript:history.back()" class="btn btn-primary">戻る</a>
     </form>
 </div>
 
-<style>
-    /* ファイル選択ボタンを非表示にする */
-    .custom-file-input {
-        opacity: 0;
-        position: absolute;
-        z-index: -1;
-    }
 
-    /* カスタムデザインのボタン */
-    .custom-file-label {
-        display: inline-block;
-        background-color: #007bff;
-        color: #fff;
-        padding: 6px 12px;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-</style>
 <script>
     function checkSubmit() {
-        if (window.confirm('更新してよろしいですか？')) {
+        if (window.confirm('登録してよろしいですか？')) {
             return true;
         } else {
             return false;
         }
     }
-
-    const imageInput = document.getElementById("image");
-    const currentImageParagraph = document.getElementById("currentImage");
-
-    // ページロード時に現在の画像ファイル名を表示（画像がある場合のみ）
-    if ("{{ $player->image }}") {
-        const currentImageName = "現在の画像: " + "{{ $player->image }}";
-        currentImageParagraph.textContent = currentImageName;
-    }
-
-    imageInput.addEventListener("change", function() {
-        const selectedFileName = imageInput.files[0]?.name || "ファイルを選択してください";
-        currentImageParagraph.textContent = "選手画像: " + selectedFileName;
-    });
 
     // 投球回数と失点数のinput要素を取得
     const $inning = $('#inning');
@@ -256,6 +362,7 @@
             $('#era').val(eraValue);
         }
     });
+
 
     // 打席数と安打数のinput要素を取得
     const $count = $('#count');
