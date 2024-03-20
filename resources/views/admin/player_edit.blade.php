@@ -142,7 +142,7 @@
 
         <div class="form-group">
             <label for="sacrifice_hits">犠打</label>
-            <input type="number" name="sacrifice_hits" class="form-control" value="{{ old('sacrifice_hits') }}">
+            <input type="number" name="sacrifice_hits" class="form-control" value="{{ $player->sacrifice_hits }}">
         </div>
         @if ($errors->has('sacrifice_hits'))
         <div class="text-danger">
@@ -217,7 +217,7 @@
 
         <div class="form-group">
             <label for="created_at">作成日時</label>
-            <input type="text" name="created_at" class="form-control" value="{{ old('created_at') }}" readonly>
+            <input type="text" name="created_at" class="form-control" value="{{ $player->created_at }}" readonly>
         </div>
         @if ($errors->has('created_at'))
         <div class="text-danger">
@@ -227,7 +227,7 @@
 
         <div class="form-group">
             <label for="updated_at">更新日時</label>
-            <input type="text" name="updated_at" class="form-control" value="{{ old('updated_at') }}" readonly>
+            <input type="text" name="updated_at" class="form-control" value="{{ $player->updated_at }}" readonly>
         </div>
         @if ($errors->has('updated_at'))
         <div class="text-danger">

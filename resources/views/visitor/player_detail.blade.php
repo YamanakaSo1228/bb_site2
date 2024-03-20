@@ -28,24 +28,48 @@
       <thead>
         <tr>
           <th>打席数</th>
+          <th>打数</th>
           <th>安打数</th>
           <th>打率</th>
           <th>打点</th>
           <th>本塁打</th>
           <th>出塁率</th>
           <th>長打率</th>
-          <th>試合数</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>{{ $players->count }}</td>
+          <td>{{ $players->at_bats }}</td>
           <td>{{ $players->hit }}</td>
           <td>{{ $players->avg }}</td>
           <td>{{ $players->rbi }}</td>
           <td>{{ $players->home_run }}</td>
           <td>{{ $players->base_avg }}</td>
           <td>{{ $players->long_avg }}</td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <th>OPS</th>
+          <th>四死球</th>
+          <th>犠打</th>
+          <th>犠飛</th>
+          <th>二塁打</th>
+          <th>三塁打</th>
+          <th>盗塁</th>
+          <th>試合数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ $players->ops }}</td>
+          <td>{{ $players->walks }}</td>
+          <td>{{ $players->sacrifice_hits }}</td>
+          <td>{{ $players->sacrifice_flies }}</td>
+          <td>{{ $players->doubles }}</td>
+          <td>{{ $players->triples }}</td>
+          <td>{{ $players->stolen_bases }}</td>
           <td>{{ $players->game_count }}</td>
         </tr>
       </tbody>
@@ -55,10 +79,10 @@
           <th>失点数</th>
           <th>防御率</th>
           <th>登板試合数</th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th>勝利数</th>
+          <th>敗北数</th>
+          <th>勝率</th>
+          <th>完投数</th>
         </tr>
       </thead>
       <tbody>
@@ -67,10 +91,28 @@
           <td>{{ $players->conceded_points }}</td>
           <td>{{ $players->era }}</td>
           <td>{{ $players->pitched }}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{ $players->wins }}</td>
+          <td>{{ $players->losses }}</td>
+          <td>{{ $players->winning_percentage }}</td>
+          <td>{{ $players->complete_games }}</td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <th>完封数</th>
+          <th>与四死球</th>
+          <th>被安打</th>
+          <th>被本塁打</th>
+          <th>奪三振</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ $players->shutouts }}</td>
+          <td>{{ $players->walks_allowed }}</td>
+          <td>{{ $players->hits_allowed }}</td>
+          <td>{{ $players->home_runs_allowed }}</td>
+          <td>{{ $players->strikeouts }}</td>
         </tr>
       </tbody>
     </table>
