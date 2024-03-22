@@ -61,6 +61,16 @@
         @endif
 
         <div class="form-group">
+            <label for="at_bats">打数</label>
+            <input type="number" name="at_bats" id="at_bats" class="form-control" value="{{ old('at_bats') }}">
+        </div>
+        @if ($errors->has('at_bats'))
+        <div class="text-danger">
+            {{ $errors->first('at_bats') }}
+        </div>
+        @endif
+
+        <div class="form-group">
             <label for="hit">安打数</label>
             <input type="number" name="hit" id="hit" class="form-control" value="{{ old('hit') }}">
         </div>
@@ -103,7 +113,7 @@
 
         <div class="form-group">
             <label for="base_avg">出塁率</label>
-            <input type="number" step="0.001" name="base_avg" class="form-control" value="{{ old('base_avg') }}">
+            <input type="number" step="0.001" name="base_avg" id="base_avg" class="form-control" value="{{ $player->base_avg ?? '' }}" readonly>
         </div>
         @if ($errors->has('base_avg'))
         <div class="text-danger">
@@ -163,7 +173,7 @@
 
         <div class="form-group">
             <label for="walks">四死球</label>
-            <input type="number" name="walks" class="form-control" value="{{ old('walks') }}">
+            <input type="number" name="walks" id="walks" class="form-control" value="{{ old('walks') }}">
         </div>
         @if ($errors->has('walks'))
         <div class="text-danger">
@@ -363,7 +373,11 @@
     // 打席数と安打数のinput要素を取得
     const $count = $('#count');
     const $hit = $('#hit');
-
+    const $at_bats = $('#at_bats');
+    const $walks = $('#walks');
+    const $sacrifice_hits = $('#sacrifice_hits');
+    const $sacrifice_flies = $('#sacrifice_flies');
+    console.log($walks);
     // 打席数と安打数の値が変更されたら打率を計算して表示する
     $count.add($hit).on('input', function() {
         const countValue = parseInt($count.val(), 10);
@@ -377,6 +391,26 @@
             $('#avg').val(avgValue);
         }
     });
+    document.addEventListener('keyup',function() { //この行を変更
+		var result02 = parseInt(at_bats.value)  + parseInt(walks.value);
+        
+		document.getElementById('base_avg').textContent = result02;
+        console.log(document.getElementById('base_avg').textContent);
+	});
+
+    //下記の出塁率計算を完成させる
+    // $count.add($walks).on('input', function() {
+    //     const countValue = parseInt($at_bats.val(), 10);
+    //     const hitValue = parseInt($walks.val(), 10);
+    //     if (isNaN(countValue) || isNaN(hitValue) || countValue === 0) {
+    //         // 打席数または安打数が数値でない、または打席数が0の場合は打率を空にする
+    //         $('#base_avg').val('');
+    //     } else {
+    //         // 打席数と安打数から打率を計算して表示する
+    //         const avgValue = (hitValue / countValue).toFixed(3);
+    //         $('#base_avg').val(avgValue);
+    //     }
+    // });
 </script>
 
 

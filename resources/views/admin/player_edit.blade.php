@@ -61,6 +61,16 @@
         @endif
 
         <div class="form-group">
+            <label for="at_bats">打数</label>
+            <input type="number" name="at_bats" id="at_bats" class="form-control" value="{{ $player->at_bats }}">
+        </div>
+        @if ($errors->has('at_bats'))
+        <div class="text-danger">
+            {{ $errors->first('at_bats') }}
+        </div>
+        @endif
+
+        <div class="form-group">
             <label for="hit">安打数</label>
             <input type="number" name="hit" id="hit" class="form-control" value="{{ $player->hit }}">
         </div>
