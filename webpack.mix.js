@@ -11,11 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+ mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/playerCreate.js', 'public/js') // playerCreate.js をビルドする設定を追加
     .sass('resources/sass/app.scss', 'public/css')
-    .sourceMaps();
+    .sourceMaps(); // ソースマップを生成する設定を追加
+ 
 
-    const mix = require('laravel-mix');
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');

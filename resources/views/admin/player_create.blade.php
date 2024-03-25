@@ -1,5 +1,6 @@
 @extends('layouts.admin_layout')
 <link rel="stylesheet" href="{{ asset('/css/sidebars.css') }}">
+<script src="{{ mix('js/playerCreate.js') }}"></script>
 
 @section('title','選手登録')
 @section('content')
@@ -72,11 +73,31 @@
 
         <div class="form-group">
             <label for="hit">安打数</label>
-            <input type="number" name="hit" id="hit" class="form-control" value="{{ old('hit') }}">
+            <input type="number" name="hit" id="hit" class="form-control" value="0">
         </div>
         @if ($errors->has('hit'))
         <div class="text-danger">
             {{ $errors->first('hit') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="doubles">二塁打</label>
+            <input type="number" name="doubles" id="doubles" class="form-control" value="0">
+        </div>
+        @if ($errors->has('doubles'))
+        <div class="text-danger">
+            {{ $errors->first('doubles') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="triples">三塁打</label>
+            <input type="number" name="triples" id="triples" class="form-control" value="0">
+        </div>
+        @if ($errors->has('triples'))
+        <div class="text-danger">
+            {{ $errors->first('triples') }}
         </div>
         @endif
 
@@ -93,7 +114,7 @@
 
         <div class="form-group">
             <label for="rbi">打点数</label>
-            <input type="number" name="rbi" class="form-control" value="{{ old('rbi') }}">
+            <input type="number" name="rbi" class="form-control" value="0">
         </div>
         @if ($errors->has('rbi'))
         <div class="text-danger">
@@ -103,7 +124,7 @@
 
         <div class="form-group">
             <label for="home_run">本塁打数</label>
-            <input type="number" name="home_run" class="form-control" value="{{ old('home_run') }}">
+            <input type="number" name="home_run" id ="home_run" class="form-control" value="0">
         </div>
         @if ($errors->has('home_run'))
         <div class="text-danger">
@@ -123,7 +144,7 @@
 
         <div class="form-group">
             <label for="long_avg">長打率</label>
-            <input type="number" step="0.001" name="long_avg" class="form-control" value="{{ old('long_avg') }}">
+            <input type="number" step="0.001" name="long_avg" id="long_avg" class="form-control" value="{{ old('long_avg') }}" readonly>
         </div>
         @if ($errors->has('long_avg'))
         <div class="text-danger">
@@ -163,7 +184,7 @@
 
         <div class="form-group">
             <label for="ops">OPS</label>
-            <input type="number" step="0.001" name="ops" class="form-control" value="{{ old('ops') }}">
+            <input type="number" step="0.001" name="ops" id="ops" class="form-control" value="0" readonly>
         </div>
         @if ($errors->has('ops'))
         <div class="text-danger">
@@ -173,7 +194,7 @@
 
         <div class="form-group">
             <label for="walks">四死球</label>
-            <input type="number" name="walks" id="walks" class="form-control" value="{{ old('walks') }}">
+            <input type="number" name="walks" id="walks" class="form-control" value="0">
         </div>
         @if ($errors->has('walks'))
         <div class="text-danger">
@@ -183,7 +204,7 @@
 
         <div class="form-group">
             <label for="sacrifice_hits">犠打</label>
-            <input type="number" name="sacrifice_hits" class="form-control" value="{{ old('sacrifice_hits') }}">
+            <input type="number" name="sacrifice_hits" id="sacrifice_hits" class="form-control" value="0">
         </div>
         @if ($errors->has('sacrifice_hits'))
         <div class="text-danger">
@@ -193,7 +214,7 @@
 
         <div class="form-group">
             <label for="sacrifice_flies">犠飛</label>
-            <input type="number" name="sacrifice_flies" class="form-control" value="{{ old('sacrifice_flies') }}">
+            <input type="number" name="sacrifice_flies" id="sacrifice_flies" class="form-control" value="0">
         </div>
         @if ($errors->has('sacrifice_flies'))
         <div class="text-danger">
@@ -292,28 +313,29 @@
         @endif
 
         <div class="form-group">
-            <label for="walks_allowed">与四球数</label>
-            <input type="number" name="walks_allowed" class="form-control" value="{{ old('walks_allowed') }}">
+            <label for="inning">投球回数（イニング）</label>
+            <input type="number" name="inning" id="inning" class="form-control">
         </div>
-        @if ($errors->has('walks_allowed'))
-        <div class="text-danger">
-            {{ $errors->first('walks_allowed') }}
-        </div>
-        @endif
 
         <div class="form-group">
-            <label for="inning">投球回数</label>
-            <input type="number" name="inning" class="form-control" value="{{ old('inning') }}">
+            <label for="fraction">投球回数（分数）</label>
+            <select name="fraction" id="fraction" class="form-control">
+                <option value="0">0</option>
+                <option value="1/3">1/3</option>
+                <option value="2/3">2/3</option>
+            </select>
         </div>
+
         @if ($errors->has('inning'))
         <div class="text-danger">
             {{ $errors->first('inning') }}
         </div>
         @endif
 
+
         <div class="form-group">
             <label for="conceded_points">失点数</label>
-            <input type="number" name="conceded_points" class="form-control" value="{{ old('conceded_points') }}">
+            <input type="number" name="conceded_points" id="conceded_points" class="form-control" value="{{ old('conceded_points') }}">
         </div>
         @if ($errors->has('conceded_points'))
         <div class="text-danger">
@@ -351,66 +373,11 @@
         }
     }
 
-    // 投球回数と失点数のinput要素を取得
-    const $inning = $('#inning');
-    const $conceded_points = $('#conceded_points');
-
-    // 投球数と失点数の値が変更されたら防御率を計算して表示する
-    $inning.add($conceded_points).on('input', function() {
-        const inningValue = parseInt($inning.val(), 10);
-        const concededPointsValue = parseInt($conceded_points.val(), 10);
-        if (isNaN(inningValue) || isNaN(concededPointsValue) || inningValue === 0) {
-            // 投球数または失点数が数値でない、または投球回数が0の場合は打率を空にする
-            $('#era').val('');
-        } else {
-            // 投球数と失点数から打率を計算して表示する
-            const eraValue = (concededPointsValue * 9 / inningValue).toFixed(3);
-            $('#era').val(eraValue);
-        }
-    });
+    
 
 
-    // 打席数と安打数のinput要素を取得
-    const $count = $('#count');
-    const $hit = $('#hit');
-    const $at_bats = $('#at_bats');
-    const $walks = $('#walks');
-    const $sacrifice_hits = $('#sacrifice_hits');
-    const $sacrifice_flies = $('#sacrifice_flies');
-    console.log($walks);
-    // 打席数と安打数の値が変更されたら打率を計算して表示する
-    $count.add($hit).on('input', function() {
-        const countValue = parseInt($count.val(), 10);
-        const hitValue = parseInt($hit.val(), 10);
-        if (isNaN(countValue) || isNaN(hitValue) || countValue === 0) {
-            // 打席数または安打数が数値でない、または打席数が0の場合は打率を空にする
-            $('#avg').val('');
-        } else {
-            // 打席数と安打数から打率を計算して表示する
-            const avgValue = (hitValue / countValue).toFixed(3);
-            $('#avg').val(avgValue);
-        }
-    });
-    document.addEventListener('keyup',function() { //この行を変更
-		var result02 = parseInt(at_bats.value)  + parseInt(walks.value);
-        
-		document.getElementById('base_avg').textContent = result02;
-        console.log(document.getElementById('base_avg').textContent);
-	});
 
-    //下記の出塁率計算を完成させる
-    // $count.add($walks).on('input', function() {
-    //     const countValue = parseInt($at_bats.val(), 10);
-    //     const hitValue = parseInt($walks.val(), 10);
-    //     if (isNaN(countValue) || isNaN(hitValue) || countValue === 0) {
-    //         // 打席数または安打数が数値でない、または打席数が0の場合は打率を空にする
-    //         $('#base_avg').val('');
-    //     } else {
-    //         // 打席数と安打数から打率を計算して表示する
-    //         const avgValue = (hitValue / countValue).toFixed(3);
-    //         $('#base_avg').val(avgValue);
-    //     }
-    // });
+
 </script>
 
 
