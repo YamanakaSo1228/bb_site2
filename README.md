@@ -65,3 +65,10 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## for_beginner
 # bb_site2
 # bb_site2
+
+
+
+
+//　防御率計算でイニングを分数で計算できるように作成
+//　bladeにて上記の計算を存在ないカラム名で行い、少数を含めた（イニングと1/3まで）ものをhtml非表示で登録できるようにする。←カラムを作成していないから
+　　⇧これ表示するときに少数なので条件式を使用してイニング表記する必要があるので注意（管理者での編集画面の場合は少数と切り離して表示してやる必要がある）

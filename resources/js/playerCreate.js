@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const $conceded_points = $('#conceded_points');
     const $fraction = $('#fraction');
 
-        // 投球回数の変更時に防御率を計算して表示する
-        // 投球回数の変更時に防御率を計算して表示する
+    // 投球回数の変更時に防御率を計算して表示する
     $inning.add($fraction).add($conceded_points).on('change', function() {
         const inningValue = parseFloat($inning.val()) + parseFloat(eval($fraction.val()));
         const concededPointsValue = parseInt($('#conceded_points').val(), 10);
