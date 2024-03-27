@@ -87,7 +87,14 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{ $players->inning }}</td>
+          <td>
+              {{ $players->inning }}回
+              @if ($players->fraction >= 300 && $players->fraction < 600)
+                  1/3
+              @elseif ($players->fraction >= 600)
+                  2/3
+              @endif
+          </td>
           <td>{{ $players->conceded_points }}</td>
           <td>{{ $players->era }}</td>
           <td>{{ $players->pitched }}</td>

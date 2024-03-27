@@ -24,11 +24,12 @@ class PlayerRequest extends FormRequest
     public function rules()
     {
         return [
+            'id' => 'required|integer',
             'position' => 'required',
             'uniform_number' => 'required|max:99',
             'avg' => 'required|numeric|max:1',
             'era' => 'nullable|numeric|max:99',
-            'player_name' => 'required | max:30',
+            'player_name' => 'required|max:30',
         ];
     }
 }

@@ -57,6 +57,15 @@ class PlayerController extends Controller
         Session::flash('error', 'データがありません');
         return redirect(route('member'));
       }
+
+      // イニングを小数部と整数部に分割
+      $inningParts = explode('.', $players->inning);
+      $inning = isset($inningParts[0]) ? $inningParts[0] : 0;
+      $fraction = isset($inningParts[1]) ? $inningParts[1] : 0;
+
+      // イニングとfractionをplayerオブジェクトに追加
+      $players->inning = $inning;
+      $players->fraction = $fraction;
       // $players = player::all();
 
       // dd($players);

@@ -19,6 +19,7 @@ class Player extends Model
 
     // 可変項目
     protected $fillable = [
+        'id',
         'player_id',
         'player_name',
         'position',

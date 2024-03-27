@@ -88,4 +88,19 @@ class AdminService
         $position = '外野手';
       }
     }
+
+    function calculateTotalInning($inning, $fraction) {
+      // 分数を数値に変換
+      $fractionValue = 0;
+      if ($fraction === '1/3') {
+          $fractionValue = 1 / 3;
+      } elseif ($fraction === '2/3') {
+          $fractionValue = 2 / 3;
+      }
+  
+      // イニングと分数を足し合わせる
+      $totalInning = $inning + $fractionValue;
+  
+      return $totalInning;
+    }
 }

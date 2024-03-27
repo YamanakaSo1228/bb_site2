@@ -9,8 +9,9 @@
 <!-- メインコンテンツ -->
 <div class="container">
     <h2>選手情報登録</h2>
-    <form method="POST" action="{{ route('admin.player.store') }}" onSubmit="return checkSubmit()" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.player.update') }}" onSubmit="return checkSubmit()" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="id" value="{{ $player->id }}">
 
         <div class="form-group">
             <label for="position">ポジション</label>
@@ -32,7 +33,7 @@
 
         <div class="form-group">
             <label for="uniform_number">背番号</label>
-            <input type="number" name="uniform_number" class="form-control" value="{{ $player->uniform_number }}">
+            <input type="number" name="uniform_number" id="uniform_number" class="form-control" value="{{ $player->uniform_number }}">
         </div>
         @if ($errors->has('uniform_number'))
         <div class="text-danger">
@@ -42,7 +43,7 @@
 
         <div class="form-group">
             <label for="player_name">選手名</label>
-            <input type="text" name="player_name" class="form-control" value="{{ $player->player_name }}">
+            <input type="text" name="player_name" id="player_name" class="form-control" value="{{ $player->player_name }}">
         </div>
         @if ($errors->has('player_name'))
         <div class="text-danger">
@@ -81,6 +82,26 @@
         @endif
 
         <div class="form-group">
+            <label for="doubles">二塁打</label>
+            <input type="number" name="doubles" id="doubles" class="form-control" value="{{ $player->doubles }}">
+        </div>
+        @if ($errors->has('doubles'))
+        <div class="text-danger">
+            {{ $errors->first('doubles') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="triples">三塁打</label>
+            <input type="number" name="triples" id="triples" class="form-control" value="{{ $player->triples }}">
+        </div>
+        @if ($errors->has('triples'))
+        <div class="text-danger">
+            {{ $errors->first('triples') }}
+        </div>
+        @endif
+
+        <div class="form-group">
             <label for="avg">打率</label>
             <input type="number" step="0.001" name="avg" id="avg" class="form-control" value="{{ $player->avg }}" readonly>
         </div>
@@ -92,7 +113,7 @@
 
         <div class="form-group">
             <label for="rbi">打点数</label>
-            <input type="number" name="rbi" class="form-control" value="{{ $player->rbi }}">
+            <input type="number" name="rbi" id="rbi" class="form-control" value="{{ $player->rbi }}">
         </div>
         @if ($errors->has('rbi'))
         <div class="text-danger">
@@ -102,7 +123,7 @@
 
         <div class="form-group">
             <label for="home_run">本塁打数</label>
-            <input type="number" name="home_run" class="form-control" value="{{ $player->home_run }}">
+            <input type="number" name="home_run" id="home_run" class="form-control" value="{{ $player->home_run }}">
         </div>
         @if ($errors->has('home_run'))
         <div class="text-danger">
@@ -112,7 +133,7 @@
 
         <div class="form-group">
             <label for="base_avg">出塁率</label>
-            <input type="number" step="0.001" name="base_avg" class="form-control" value="{{ $player->base_avg }}">
+            <input type="number" step="0.001" name="base_avg" id="base_avg" class="form-control" value="{{ $player->base_avg }}">
         </div>
         @if ($errors->has('base_avg'))
         <div class="text-danger">
@@ -122,7 +143,7 @@
 
         <div class="form-group">
             <label for="long_avg">長打率</label>
-            <input type="number" step="0.001" name="long_avg" class="form-control" value="{{ $player->long_avg }}">
+            <input type="number" step="0.001" name="long_avg" id="long_avg" class="form-control" value="{{ $player->long_avg }}">
         </div>
         @if ($errors->has('long_avg'))
         <div class="text-danger">
@@ -132,7 +153,7 @@
 
         <div class="form-group">
             <label for="ops">OPS</label>
-            <input type="number" step="0.001" name="ops" class="form-control" value="{{ $player->ops }}">
+            <input type="number" step="0.001" name="ops" id="ops" class="form-control" value="{{ $player->ops }}">
         </div>
         @if ($errors->has('ops'))
         <div class="text-danger">
@@ -142,7 +163,7 @@
 
         <div class="form-group">
             <label for="walks">四死球</label>
-            <input type="number" name="walks" class="form-control" value="{{ $player->walks }}">
+            <input type="number" name="walks" id="walks" class="form-control" value="{{ $player->walks }}">
         </div>
         @if ($errors->has('walks'))
         <div class="text-danger">
@@ -152,7 +173,7 @@
 
         <div class="form-group">
             <label for="sacrifice_hits">犠打</label>
-            <input type="number" name="sacrifice_hits" class="form-control" value="{{ $player->sacrifice_hits }}">
+            <input type="number" name="sacrifice_hits" id="sacrifice_hits" class="form-control" value="{{ $player->sacrifice_hits }}">
         </div>
         @if ($errors->has('sacrifice_hits'))
         <div class="text-danger">
@@ -162,7 +183,7 @@
 
         <div class="form-group">
             <label for="sacrifice_flies">犠飛</label>
-            <input type="number" name="sacrifice_flies" class="form-control" value="{{ $player->sacrifice_flies }}">
+            <input type="number" name="sacrifice_flies" id="sacrifice_flies" class="form-control" value="{{ $player->sacrifice_flies }}">
         </div>
         @if ($errors->has('sacrifice_flies'))
         <div class="text-danger">
@@ -172,7 +193,7 @@
 
         <div class="form-group">
             <label for="game_count">試合数</label>
-            <input type="number" name="game_count" class="form-control" value="{{ $player->game_count }}">
+            <input type="number" name="game_count" id="game_count" class="form-control" value="{{ $player->game_count }}">
         </div>
         @if ($errors->has('game_count'))
         <div class="text-danger">
@@ -181,14 +202,18 @@
         @endif
 
         <div class="form-group">
-            <label for="inning">投球イニング数</label>
+        <label for="inning">投球イニング数</label>
+        <div class="input-group">
             <input type="number" step="0.1" name="inning" id="inning" class="form-control" value="{{ $player->inning }}">
+            <div class="input-group-append">
+                <select name="fraction" id="fraction" class="form-control">
+                    <option value="0" {{ $player->fraction == 0 ? 'selected' : '' }}>0</option>
+                    <option value="1/3" {{ $player->fraction >= 300 && $player->fraction < 600 ? 'selected' : '' }}>1/3</option>
+                    <option value="2/3" {{ $player->fraction >= 600 ? 'selected' : '' }}>2/3</option>
+                </select>
+            </div>
         </div>
-        @if ($errors->has('inning'))
-        <div class="text-danger">
-            {{ $errors->first('inning') }}
         </div>
-        @endif
 
         <div class="form-group">
             <label for="conceded_points">失点数</label>
@@ -217,7 +242,7 @@
 
         <div class="form-group">
             <label for="pitched">投球数</label>
-            <input type="number" name="pitched" class="form-control" value="{{ $player->pitched }}">
+            <input type="number" name="pitched" id="pitched" class="form-control" value="{{ $player->pitched }}">
         </div>
         @if ($errors->has('pitched'))
         <div class="text-danger">
@@ -227,7 +252,7 @@
 
         <div class="form-group">
             <label for="created_at">作成日時</label>
-            <input type="text" name="created_at" class="form-control" value="{{ $player->created_at }}" readonly>
+            <input type="text" name="created_at" id="created_at" class="form-control" value="{{ $player->created_at }}" readonly>
         </div>
         @if ($errors->has('created_at'))
         <div class="text-danger">
@@ -237,7 +262,7 @@
 
         <div class="form-group">
             <label for="updated_at">更新日時</label>
-            <input type="text" name="updated_at" class="form-control" value="{{ $player->updated_at }}" readonly>
+            <input type="text" name="updated_at" id="updated_at" class="form-control" value="{{ $player->updated_at }}" readonly>
         </div>
         @if ($errors->has('updated_at'))
         <div class="text-danger">
@@ -247,7 +272,7 @@
 
         <div class="form-group">
             <label for="wins">勝利数</label>
-            <input type="number" name="wins" class="form-control" value="{{ $player->wins }}">
+            <input type="number" name="wins" id="wins" class="form-control" value="{{ $player->wins }}">
         </div>
         @if ($errors->has('wins'))
         <div class="text-danger">
@@ -257,7 +282,7 @@
 
         <div class="form-group">
             <label for="losses">敗北数</label>
-            <input type="number" name="losses" class="form-control" value="{{ $player->losses }}">
+            <input type="number" name="losses" id="losses" class="form-control" value="{{ $player->losses }}">
         </div>
         @if ($errors->has('losses'))
         <div class="text-danger">
@@ -267,7 +292,7 @@
 
         <div class="form-group">
             <label for="winning_percentage">勝率</label>
-            <input type="number" step="0.001" name="winning_percentage" class="form-control" value="{{ number_format($player->winning_percentage, 2, '.', '') }}" readonly>
+            <input type="number" step="0.001" name="winning_percentage" id="winning_percentage" class="form-control" value="{{ number_format($player->winning_percentage, 2, '.', '') }}" readonly>
         </div>
         @if ($errors->has('winning_percentage'))
         <div class="text-danger">
@@ -287,7 +312,7 @@
 
         <div class="form-group">
             <label for="shutouts">完封数</label>
-            <input type="number" name="shutouts" class="form-control" value="{{ $player->shutouts }}">
+            <input type="number" name="shutouts" id="shutouts" class="form-control" value="{{ $player->shutouts }}">
         </div>
         @if ($errors->has('shutouts'))
         <div class="text-danger">
@@ -297,7 +322,7 @@
 
         <div class="form-group">
             <label for="hits_allowed">被安打数</label>
-            <input type="number" name="hits_allowed" class="form-control" value="{{ $player->hits_allowed }}">
+            <input type="number" name="hits_allowed" id="hits_allowed" class="form-control" value="{{ $player->hits_allowed }}">
         </div>
         @if ($errors->has('hits_allowed'))
         <div class="text-danger">
@@ -307,7 +332,7 @@
 
         <div class="form-group">
             <label for="home_runs_allowed">被本塁打数</label>
-            <input type="number" name="home_runs_allowed" class="form-control" value="{{ $player->home_runs_allowed }}">
+            <input type="number" name="home_runs_allowed" id="home_runs_allowed" class="form-control" value="{{ $player->home_runs_allowed }}">
         </div>
         @if ($errors->has('home_runs_allowed'))
         <div class="text-danger">
@@ -317,7 +342,7 @@
 
         <div class="form-group">
             <label for="strikeouts">奪三振数</label>
-            <input type="number" name="strikeouts" class="form-control" value="{{ $player->strikeouts }}">
+            <input type="number" name="strikeouts" id="strikeouts" class="form-control" value="{{ $player->strikeouts }}">
         </div>
         @if ($errors->has('strikeouts'))
         <div class="text-danger">
@@ -327,7 +352,7 @@
 
         <div class="form-group">
             <label for="walks_allowed">与四球数</label>
-            <input type="number" name="walks_allowed" class="form-control" value="{{ $player->walks_allowed }}">
+            <input type="number" name="walks_allowed" id="walks_allowed" class="form-control" value="{{ $player->walks_allowed }}">
         </div>
         @if ($errors->has('walks_allowed'))
         <div class="text-danger">
