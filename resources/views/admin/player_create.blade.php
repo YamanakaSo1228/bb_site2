@@ -12,7 +12,6 @@
     <h2>選手情報登録</h2>
     <form method="POST" action="{{ route('admin.player.store') }}" onSubmit="return checkSubmit()" enctype="multipart/form-data">
         @csrf
-
         <div class="form-group">
             <label for="position">ポジション</label>
             <select name="position" class="form-control">
@@ -103,7 +102,7 @@
 
         <div class="form-group">
             <label for="avg">打率</label>
-            <input type="text" name="avg" id="avg" class="form-control" value="{{ old('avg') }}" readonly>
+            <input type="text" name="avg" id="avg" class="form-control" value="0" readonly>
         </div>
         @if ($errors->has('avg'))
             <div class="text-danger">
@@ -234,7 +233,7 @@
 
         <div class="form-group">
             <label for="wins">勝利数</label>
-            <input type="number" name="wins" class="form-control" value="{{ old('wins') }}">
+            <input type="number" name="wins" id="wins" class="form-control" value="0">
         </div>
         @if ($errors->has('wins'))
         <div class="text-danger">
@@ -244,7 +243,7 @@
 
         <div class="form-group">
             <label for="losses">敗北数</label>
-            <input type="number" name="losses" class="form-control" value="{{ old('losses') }}">
+            <input type="number" name="losses" id="losses" class="form-control" value="0">
         </div>
         @if ($errors->has('losses'))
         <div class="text-danger">
@@ -254,7 +253,7 @@
 
         <div class="form-group">
             <label for="winning_percentage">勝率</label>
-            <input type="number" step="0.001" name="winning_percentage" class="form-control" value="{{ old('winning_percentage') }}">
+            <input type="number" step="0.001" name="winning_percentage" id="winning_percentage" class="form-control" value="0" readonly>
         </div>
         @if ($errors->has('winning_percentage'))
         <div class="text-danger">

@@ -81,3 +81,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 これもとりあえず完了
 
 次項は登録カラム等の整理と動作確認（動作確認は全て）←初期表示が必要なものは追加する
+上記は勝率自動計算のあと！！！！
+→勝率自動計算・OPS修正完了
+
+優先課題
+①画像登録がうまく行っていないので修正
+②カラム表示（成績）の並び替え

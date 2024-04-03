@@ -24,7 +24,7 @@ class PlayerRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|integer',
+            // 'id' => 'required|integer',
             'position' => 'required',
             'uniform_number' => 'required|max:99',
             'avg' => 'required|numeric|max:1',

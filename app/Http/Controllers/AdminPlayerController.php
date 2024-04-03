@@ -56,16 +56,15 @@ class AdminPlayerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
-        $player = Player::find(1); // 任意のプレーヤーIDを指定してデータを取得する
-        if ($player) {
-          return view('admin.player_create', compact('player'));
-        } else {
-          return view('admin.player_create');
-        }
+      $player = null; // 任意のプレーヤーIDを指定してデータを取得する
+
+        // dd($player);
+
+        return view('admin.player_create', compact('player'));
     }
+
 
     /**
      * 選手の登録処理を行う
