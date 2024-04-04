@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Database\QueryException;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Services\AdminService;
+use Illuminate\Support\Facades\Storage;
 
 class AdminPlayerController extends Controller
 {
@@ -29,7 +30,7 @@ class AdminPlayerController extends Controller
     public function adminPlayer()
 {
     //
-    $players = Player::orderBy('created_at', 'asc')->paginate(5);
+    $players = Player::orderBy('updated_at', 'desc')->paginate(5);
 
     foreach($players as $player){
         if($player->position == 1){
@@ -167,8 +168,10 @@ class AdminPlayerController extends Controller
 
         // 画像アップロード処理
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('uploads', 'public');
-            $inputs['image'] = $imagePath;
+          // 新しい画像がアップロードされた場合は、古い画像を削除して新しい画像を保存する
+          $imagePath = $request->file('image')->store('uploads', 'public');
+          Storage::disk('public')->delete($oldImage); // 古い画像を削除
+          $inputs['image'] = $imagePath;
         } else {
             // 画像がアップロードされなかった場合は、元の画像を再度設定
             $inputs['image'] = $oldImage;
@@ -182,10 +185,10 @@ class AdminPlayerController extends Controller
         $player->save();
     
         return redirect(route('admin.player'))->with('success', '選手の登録内容を更新しました！');
-    } catch (\Throwable $e) {
-        Log::error($e);
-        return redirect()->back()->with('error', 'エラーが発生しました。もう一度試してください。');
-    }
+      } catch (\Throwable $e) {
+          Log::error($e);
+          return redirect()->back()->with('error', 'エラーが発生しました。もう一度試してください。');
+      }
     }
 
 

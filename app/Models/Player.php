@@ -24,8 +24,8 @@ class Player extends Model
         'player_name',
         'position',
         'uniform_number',
-        'created_at',
-        'updated_at',
+        // 'created_at',
+        // 'updated_at',
         'avg',
         'at_bats',
         'runs',
@@ -56,6 +56,7 @@ class Player extends Model
         'inning',
         'conceded_points',
         'pitched',
+        'image'
     ];
 
     public function games()
