@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
+    $(document).ready(function() {
+        // ページ読み込み時にフォームを読み込み専用に設定する
+        $('#avg').prop('readonly', true);
+        $('#era').prop('readonly', true);
+        $('#long_avg').prop('readonly', true);
+        $('#ops').prop('readonly', true);
+        $('#base_avg').prop('readonly', true);
+        $('#winning_percentage').prop('readonly', true);
+        $('#total_hit').prop('readonly', true);
+        
+        // フォームがクリックされたときにアラートを表示する
+        $('#avg').on('click', function() {
+            alert('このフィールドは編集できません。');
+        });
+    });
+
     const $inning = $('#inning');
     const $conceded_points = $('#conceded_points');
     const $fraction = $('#fraction');
@@ -64,6 +80,37 @@ document.addEventListener('DOMContentLoaded', function() {
             const avg = (hitValue / at_batsValue).toFixed(3);
             $('#avg').val(avg);
         }
+    });
+
+    // 安打数初期表示用
+    $(document).ready(function() {
+        // 各打撃成績の値を取得する
+        const singlesValue = parseInt($('#hit').val(), 10) || 0; // 単打数
+        const doublesValue = parseInt($('#doubles').val(), 10) || 0; // 二塁打数
+        const triplesValue = parseInt($('#triples').val(), 10) || 0; // 三塁打数
+        const homeRunValue = parseInt($('#home_run').val(), 10) || 0; // 本塁打数
+    
+        // 合計安打数を計算する
+        const totalHit = singlesValue + doublesValue + triplesValue + homeRunValue;
+    
+        // 合計安打数を表示する
+        $('#total_hit').val(totalHit);
+    });
+    // 各入力フィールドの値を取得する
+    const $totalHit = $('#total_hit');
+    // 合計安打数計算
+    $hit.add($doubles).add($triples).add($homeRun).on('input', function() {
+        // 各打撃成績の値を取得する
+        const singlesValue = parseInt($hit.val(), 10) || 0; // 単打数
+        const doublesValue = parseInt($doubles.val(), 10) || 0; // 二塁打数
+        const triplesValue = parseInt($triples.val(), 10) || 0; // 三塁打数
+        const homeRunValue = parseInt($homeRun.val(), 10) || 0; // 本塁打数
+
+        // 合計安打数を計算する
+        const totalHit = singlesValue + doublesValue + triplesValue + homeRunValue;
+
+        // 合計安打数を表示する
+        $totalHit.val(totalHit);
     });
 
     // 勝率の自動計算

@@ -1,5 +1,7 @@
 @extends('layouts.admin_layout')
 <link rel="stylesheet" href="{{ asset('/css/sidebars.css') }}">
+<script src="{{ mix('js/playerCreate.js') }}"></script>
+
 
 @section('title','選手登録')
 @section('content')
@@ -12,6 +14,26 @@
     <form method="POST" action="{{ route('admin.player.update') }}" onSubmit="return checkSubmit()" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="id" value="{{ $player->id }}">
+
+        <div class="form-group">
+            <label for="player_name">選手名</label>
+            <input type="text" name="player_name" id="player_name" class="form-control" value="{{ $player->player_name }}">
+        </div>
+        @if ($errors->has('player_name'))
+        <div class="text-danger">
+            {{ $errors->first('player_name') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="uniform_number">背番号</label>
+            <input type="number" name="uniform_number" id="uniform_number" class="form-control" value="{{ $player->uniform_number }}">
+        </div>
+        @if ($errors->has('uniform_number'))
+        <div class="text-danger">
+            {{ $errors->first('uniform_number') }}
+        </div>
+        @endif
 
         <div class="form-group">
             <label for="position">ポジション</label>
@@ -28,26 +50,6 @@
         @if ($errors->has('position'))
         <div class="text-danger">
             {{ $errors->first('position') }}
-        </div>
-        @endif
-
-        <div class="form-group">
-            <label for="uniform_number">背番号</label>
-            <input type="number" name="uniform_number" id="uniform_number" class="form-control" value="{{ $player->uniform_number }}">
-        </div>
-        @if ($errors->has('uniform_number'))
-        <div class="text-danger">
-            {{ $errors->first('uniform_number') }}
-        </div>
-        @endif
-
-        <div class="form-group">
-            <label for="player_name">選手名</label>
-            <input type="text" name="player_name" id="player_name" class="form-control" value="{{ $player->player_name }}">
-        </div>
-        @if ($errors->has('player_name'))
-        <div class="text-danger">
-            {{ $errors->first('player_name') }}
         </div>
         @endif
 
@@ -102,8 +104,23 @@
         @endif
 
         <div class="form-group">
+            <label for="home_run">本塁打数</label>
+            <input type="number" name="home_run" id="home_run" class="form-control" value="{{ $player->home_run }}">
+        </div>
+        @if ($errors->has('home_run'))
+        <div class="text-danger">
+            {{ $errors->first('home_run') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="total_hit">安打数合計</label>
+            <input type="number" step="1" name="total_hit" id="total_hit" class="form-control" value="0" >
+        </div>
+
+        <div class="form-group">
             <label for="avg">打率</label>
-            <input type="number" step="0.001" name="avg" id="avg" class="form-control" value="{{ $player->avg }}" readonly>
+            <input type="number" step="0.001" name="avg" id="avg" class="form-control" value="{{ $player->avg }}" >
         </div>
         @if ($errors->has('avg'))
         <div class="text-danger">
@@ -122,28 +139,18 @@
         @endif
 
         <div class="form-group">
-            <label for="home_run">本塁打数</label>
-            <input type="number" name="home_run" id="home_run" class="form-control" value="{{ $player->home_run }}">
+            <label for="runs">盗塁</label>
+            <input type="number" name="runs" id="runs" class="form-control" value="{{ $player->runs }}">
         </div>
-        @if ($errors->has('home_run'))
+        @if ($errors->has('run'))
         <div class="text-danger">
-            {{ $errors->first('home_run') }}
-        </div>
-        @endif
-
-        <div class="form-group">
-            <label for="base_avg">出塁率</label>
-            <input type="number" step="0.001" name="base_avg" id="base_avg" class="form-control" value="{{ $player->base_avg }}">
-        </div>
-        @if ($errors->has('base_avg'))
-        <div class="text-danger">
-            {{ $errors->first('base_avg') }}
+            {{ $errors->first('run') }}
         </div>
         @endif
 
         <div class="form-group">
             <label for="long_avg">長打率</label>
-            <input type="number" step="0.001" name="long_avg" id="long_avg" class="form-control" value="{{ $player->long_avg }}">
+            <input type="number" step="0.001" name="long_avg" id="long_avg" class="form-control" value="{{ $player->long_avg }}" >
         </div>
         @if ($errors->has('long_avg'))
         <div class="text-danger">
@@ -153,7 +160,7 @@
 
         <div class="form-group">
             <label for="ops">OPS</label>
-            <input type="number" step="0.001" name="ops" id="ops" class="form-control" value="{{ $player->ops }}">
+            <input type="number" step="0.001" name="ops" id="ops" class="form-control" value="{{ $player->ops }}" >
         </div>
         @if ($errors->has('ops'))
         <div class="text-danger">
@@ -188,6 +195,16 @@
         @if ($errors->has('sacrifice_flies'))
         <div class="text-danger">
             {{ $errors->first('sacrifice_flies') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="base_avg">出塁率</label>
+            <input type="number" step="0.001" name="base_avg" id="base_avg" class="form-control" value="{{ $player->base_avg }}" >
+        </div>
+        @if ($errors->has('base_avg'))
+        <div class="text-danger">
+            {{ $errors->first('base_avg') }}
         </div>
         @endif
 
@@ -228,9 +245,9 @@
         <div class="form-group">
             <label for="era">防御率</label>
             @if ($player->era !== null)
-            <input type="text" name="era" id="era" class="form-control" value="{{ number_format($player->era, 2, '.', '') }}" readonly>
+            <input type="text" name="era" id="era" class="form-control" value="{{ number_format($player->era, 2, '.', '') }}" >
             @else
-            <input type="text" name="era" id="era" class="form-control" value="" readonly>
+            <input type="text" name="era" id="era" class="form-control" value="" >
             @endif
         </div>
         @if ($errors->has('era'))
@@ -239,34 +256,13 @@
         </div>
         @endif
 
-
         <div class="form-group">
-            <label for="pitched">投球数</label>
+            <label for="pitched">登板回数</label>
             <input type="number" name="pitched" id="pitched" class="form-control" value="{{ $player->pitched }}">
         </div>
         @if ($errors->has('pitched'))
         <div class="text-danger">
             {{ $errors->first('pitched') }}
-        </div>
-        @endif
-
-        <div class="form-group">
-            <label for="created_at">作成日時</label>
-            <input type="text" name="created_at" id="created_at" class="form-control" value="{{ $player->created_at }}" readonly>
-        </div>
-        @if ($errors->has('created_at'))
-        <div class="text-danger">
-            {{ $errors->first('created_at') }}
-        </div>
-        @endif
-
-        <div class="form-group">
-            <label for="updated_at">更新日時</label>
-            <input type="text" name="updated_at" id="updated_at" class="form-control" value="{{ $player->updated_at }}" readonly>
-        </div>
-        @if ($errors->has('updated_at'))
-        <div class="text-danger">
-            {{ $errors->first('updated_at') }}
         </div>
         @endif
 
@@ -292,7 +288,7 @@
 
         <div class="form-group">
             <label for="winning_percentage">勝率</label>
-            <input type="number" step="0.001" name="winning_percentage" id="winning_percentage" class="form-control" value="{{ number_format($player->winning_percentage, 2, '.', '') }}" readonly>
+            <input type="number" step="0.001" name="winning_percentage" id="winning_percentage" class="form-control" value="{{ number_format($player->winning_percentage, 3, '.', '') }}" >
         </div>
         @if ($errors->has('winning_percentage'))
         <div class="text-danger">
@@ -365,6 +361,26 @@
             <input type="file" name="image" class="form-control-file">
         </div>
 
+        <div class="form-group">
+            <label for="created_at">作成日時</label>
+            <input type="text" name="created_at" id="created_at" class="form-control" value="{{ $player->created_at }}" >
+        </div>
+        @if ($errors->has('created_at'))
+        <div class="text-danger">
+            {{ $errors->first('created_at') }}
+        </div>
+        @endif
+
+        <div class="form-group">
+            <label for="updated_at">更新日時</label>
+            <input type="text" name="updated_at" id="updated_at" class="form-control" value="{{ $player->updated_at }}" >
+        </div>
+        @if ($errors->has('updated_at'))
+        <div class="text-danger">
+            {{ $errors->first('updated_at') }}
+        </div>
+        @endif
+
         <button type="submit" class="btn btn-primary">登録</button>
         <a href="javascript:history.back()" class="btn btn-primary">戻る</a>
     </form>
@@ -380,42 +396,6 @@
         }
     }
 
-    // 投球回数と失点数のinput要素を取得
-    const $inning = $('#inning');
-    const $conceded_points = $('#conceded_points');
-
-    // 投球数と失点数の値が変更されたら防御率を計算して表示する
-    $inning.add($conceded_points).on('input', function() {
-        const inningValue = parseInt($inning.val(), 10);
-        const concededPointsValue = parseInt($conceded_points.val(), 10);
-        if (isNaN(inningValue) || isNaN(concededPointsValue) || inningValue === 0) {
-            // 投球数または失点数が数値でない、または投球回数が0の場合は打率を空にする
-            $('#era').val('');
-        } else {
-            // 投球数と失点数から打率を計算して表示する
-            const eraValue = (concededPointsValue * 9 / inningValue).toFixed(3);
-            $('#era').val(eraValue);
-        }
-    });
-
-
-    // 打席数と安打数のinput要素を取得
-    const $count = $('#count');
-    const $hit = $('#hit');
-
-    // 打席数と安打数の値が変更されたら打率を計算して表示する
-    $count.add($hit).on('input', function() {
-        const countValue = parseInt($count.val(), 10);
-        const hitValue = parseInt($hit.val(), 10);
-        if (isNaN(countValue) || isNaN(hitValue) || countValue === 0) {
-            // 打席数または安打数が数値でない、または打席数が0の場合は打率を空にする
-            $('#avg').val('');
-        } else {
-            // 打席数と安打数から打率を計算して表示する
-            const avgValue = (hitValue / countValue).toFixed(3);
-            $('#avg').val(avgValue);
-        }
-    });
 </script>
 
 
