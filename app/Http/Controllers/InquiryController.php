@@ -59,10 +59,10 @@ class InquiryController extends Controller
     {
 
     // actionの値を取得
-    $action = $request->input('action');
+    $action = $request->input('submit_value');
 
     // action以外のinputの値を取得
-    $inputs = $request->except('action');
+    $inputs = $request->except('submit_value');
 
     //actionの値で分岐
     if($action !== 'submit') {
