@@ -455,11 +455,6 @@ body {
   margin-top: 140px;
 }
 
-/* ホーム画面の背景色指定 */
-.container-fluid.bg-blue {
-  background-image: url(istockphoto-1075877764-1024x1024.jpg);
-}
-
 .container.inquiry {
   /* background: #0092ffc2; */
   border: 5px solid #91ff8a;
