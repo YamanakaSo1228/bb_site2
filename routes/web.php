@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminTeamController;
 use App\Http\Controllers\AdminInquiryController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\PrivacyController;
+use \App\Http\Middleware\CheckRefererMiddleware;
 
 
 /*
@@ -30,20 +31,16 @@ Route::get('/member', 'App\Http\Controllers\PlayerController@memberList')->name(
 
 Route::get('/member/{id}', 'App\Http\Controllers\PlayerController@memberDetail')->name('detail');
 
-//お問い合わせ表示
-// Route::get('/inquiry', 'App\Http\Controllers\InquiryController@create')->name('inquiry.create');
-// Route::post('/inquiry', 'App\Http\Controllers\InquiryController@store')->name('inquiry.store');
-// // Route::get('/inquiry', 'InquiryController@create')->name('inquiry.create');
-// // Route::post('/inquiry', 'InquiryController@store')->name('inquiry.store');
-
 //入力フォームページ
 Route::get('/inquiry', 'App\Http\Controllers\InquiryController@index')->name('inquiry.index');
 //確認フォームページ
-Route::post('/inquiry/confirm', 'App\Http\Controllers\InquiryController@confirm')->name('inquiry.confirm');
+Route::post('/inquiry/confirm', 'App\Http\Controllers\InquiryController@confirm')->name('inquiry.confirm')->middleware('App\Http\Middleware\CheckRefererMiddleware');
 //送信完了ページ
 Route::post('/inquiry/thanks', 'App\Http\Controllers\InquiryController@send')->name('inquiry.send');
 //プライバシーポリシページ
 Route::get('/privacy', [PrivacyController::class, 'index'])->name('privacy');
+//
+
 
 
 //入力フォームページ
