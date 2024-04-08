@@ -34,7 +34,7 @@ Route::get('/member/{id}', 'App\Http\Controllers\PlayerController@memberDetail')
 //入力フォームページ
 Route::get('/inquiry', 'App\Http\Controllers\InquiryController@index')->name('inquiry.index');
 //確認フォームページ
-Route::post('/inquiry/confirm', 'App\Http\Controllers\InquiryController@confirm')->name('inquiry.confirm')->middleware('App\Http\Middleware\CheckRefererMiddleware');
+Route::match(['get', 'post'], '/inquiry/confirm', 'App\Http\Controllers\InquiryController@confirm')->name('inquiry.confirm')->middleware('App\Http\Middleware\CheckRefererMiddleware');
 //送信完了ページ
 Route::post('/inquiry/thanks', 'App\Http\Controllers\InquiryController@send')->name('inquiry.send');
 //プライバシーポリシページ
