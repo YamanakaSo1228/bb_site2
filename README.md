@@ -99,3 +99,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 次回優先的に、登録系が問題ないかの確認
 →デザインで気になる箇所あれば優先的に直しておく（問い合わせのデザインは少し怪しい）
+
+上記登録関連は試したが、問題なさそう
+→引き続きデザイン関連の修正（訪問者側を優先的に）

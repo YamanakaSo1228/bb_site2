@@ -6,7 +6,8 @@
 
 <x-alert type="success" :session="session('success')" />
 <!-- メインコンテンツ -->
-<h2 class="opponent-header">VS {{ $game->opponent }}</h2>
+<h2 class="opponent-header">VS {{ $game->opponent }}<p>{{ $game->game_date }}</p></h2>
+<p class="opponent-header">{{ $game->game_comment }}</p>
 <table class="admin-score-table border">
   <thead>
     <tr>
@@ -62,6 +63,7 @@
   <button type="button" class="btn btn-primary edit-link" onclick="location.href='/admin/game/edit/{{ $game->id }}'">編集</button>
   <a href="javascript:history.back()" class="btn btn-primary">戻る</a>
 </div>
+
 
 
 @endsection

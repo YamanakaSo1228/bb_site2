@@ -663,3 +663,7 @@ h3.opponent-header:before {
   .hidden {
     display: none;
   }
+
+button.btn.btn-primary.edit-link {
+  margin-right: 50px;
+}
