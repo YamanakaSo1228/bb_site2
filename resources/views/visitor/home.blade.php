@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title','ホーム')
 @section('content')
+<link rel="stylesheet" href="{{ asset('/css/notice.css') }}">
 <div class="position-relative d-flex justify-content-center">
   <img src="{{ asset('images/DSC00784.JPG') }}" alt="画像" class="home-image">
   <div class="image-text position-absolute top-50 start-50 translate-middle text-center">
@@ -87,7 +88,7 @@
     </div>
     @endforeach
     <div class="text-center">
-      <a href="{{ route('game') }}" class="btn btn-primary game-detail">もっと見る</a>
+      <a href="{{ route('game') }}" class="btn-primary game-detail detail-btn">もっと見る</a>
     </div>
   </div>
 
@@ -108,7 +109,7 @@
     @if(count($notices) > 3)
     <div class="btn-box">
       <div class="text-center">
-        <button id="toggleButton" class="btn btn-primary game-detail">もっと見る</button>
+        <button id="toggleButton" class="btn-primary game-detail detail-btn">もっと見る</button>
       </div>
     </div>
     @endif
@@ -145,12 +146,6 @@
       margin-top: 20px;
     }
 
-    /* もっと見るボタンのスタイルを変更 */
-    #toggleButton {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-    }
   </style>
 
 

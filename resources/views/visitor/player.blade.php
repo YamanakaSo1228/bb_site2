@@ -41,7 +41,7 @@
             </li>
             @endif
           </ul>
-          <a href="/member/{{ $player->id }}" class="btn-square-little-rich">もっと見る</a>
+          <a href="/member/{{ $player->id }}" class="btn-square-little-rich detail-btn">もっと見る</a>
         </div>
       </div>
     </div>
