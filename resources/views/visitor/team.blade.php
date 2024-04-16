@@ -68,10 +68,17 @@
 <div class="container">
   <h1 class="heading-013"> BLUE HERTS</h1>
 
-  <h2 class="team-title">{{ $team[0]->team_title }}</h2>
-  <div class="box21">
-    <p>{{ $team[0]->team_text }}</p>
-  </div>
+  @if(isset($team[0]))
+    <h2 class="team-title">{{ $team[0]->team_title }}</h2>
+    <div class="box21">
+        <p>{{ $team[0]->team_text }}</p>
+    </div>
+  @else
+    <h2 class="team-title">テスト中</h2>
+    <div class="box21">
+        <p>テスト中</p>
+    </div>
+  @endif
 
   <div class="text-center">
     <img src="{{ asset('images/08295B93-2BE7-417C-AA71-308DE19DA172.jpeg') }}" alt="画像">

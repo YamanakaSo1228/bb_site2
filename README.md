@@ -102,3 +102,30 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 上記登録関連は試したが、問題なさそう
 →引き続きデザイン関連の修正（訪問者側を優先的に）
+
+User
+Nothing to install, update or remove
+Package fruitcake/laravel-cors is abandoned, you should avoid using it. No replacement was suggested.
+Package swiftmailer/swiftmailer is abandoned, you should avoid using it. Use symfony/mailer instead.
+Generating optimized autoload files
+Class Database\Seeders\BattingRecordSeeder located in ./database/seeders/BattingRecord.php does not comply with psr-4 autoloading standard. Skipping.
+
+この辺りも解決したい
+
+ChatGPT
+このメッセージは、いくつかの問題を示しています。それぞれに対処しましょう：
+
+Package fruitcake/laravel-cors is abandoned, you should avoid using it. No replacement was suggested.
+fruitcake/laravel-cors パッケージは非推奨になっています。代わりに、Laravel 7以降では fruitcake/laravel-cors の代わりに、Laravel の CORS のミドルウェアが標準で提供されるようになりました。Laravel の公式ドキュメントを参照して、組み込みの CORS ミドルウェアの使い方を確認してください。
+
+Package swiftmailer/swiftmailer is abandoned, you should avoid using it. Use symfony/mailer instead.
+swiftmailer/swiftmailer パッケージも非推奨です。代わりに symfony/mailer を使用するように推奨されています。symfony/mailer パッケージは Laravel でメール送信を行うための優れた選択肢です。symfony/mailer をインストールし、その使用方法について Laravel のドキュメントを参照してください。
+
+Class Database\Seeders\BattingRecordSeeder located in ./database/seeders/BattingRecord.php does not comply with psr-4 autoloading standard. Skipping.
+BattingRecordSeeder クラスが PSR-4 のオートロード規約に準拠していないため、Composer がスキップしています。PSR-4 の規約に従って、クラスの名前空間とファイルパスを正しく設定してください。例えば、Database\Seeders 名前空間に属するクラスは、database/seeders ディレクトリに配置する必要があります。
+
+これらの問題に対処すると、メッセージが解消され、問題が解決されるはずです。
+
+ln -s /home/bluehearts/bb_site2 /home/bluehearts/www（ご自分で決めてください）
+
+cp -r /home/bluehearts/bb_site2/. /home/bluehearts/www/bluehearts
