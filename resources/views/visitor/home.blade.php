@@ -29,7 +29,7 @@
       <table class=" score-table border">
         <thead>
           <tr>
-            <th>チーム</th>
+            <th class="team-width">チーム</th>
             <th>1</th>
             <th>2</th>
             <th>3</th>
@@ -47,9 +47,9 @@
         <tbody>
           <tr>
             @if($game->flip == 0)
-            <td>{{ $game->opponent }}</td>
+            <td class="team-width">{{ $game->opponent }}</td>
             @else
-            <td><span style="color: blue;">★</span>BLUE HEARTS</td>
+            <td class="team-width"><span style="color: blue;">★</span>BLUE HEARTS</td>
             @endif
             <td>{{ $game->top_first }}</td>
             <td>{{ $game->top_second }}</td>
@@ -66,9 +66,9 @@
           </tr>
           <tr>
             @if($game->flip == 1)
-            <td>{{ $game->opponent }}</td>
+            <td class="team-width">{{ $game->opponent }}</td>
             @else
-            <td><span style="color: blue;">★</span>BLUE HEARTS</td>
+            <td class="team-width"><span style="color: blue;">★</span>BLUE HEARTS</td>
             @endif
             <td>{{ $game->bottom_first }}</td>
             <td>{{ $game->bottom_second }}</td>

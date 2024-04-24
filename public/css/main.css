@@ -460,7 +460,7 @@ body {
 }
 
 .header-margin {
-  margin-top: 140px;
+  margin-top: 120px;
 }
 
 .container.inquiry {
@@ -628,6 +628,9 @@ body {
 .game-result th {
   border: 2px solid #000; /* ヘッダーセルの枠線を設定 */
   padding: 8px; /* セル内の余白を調整 */
+}
+.team-width {
+  width: 180px;
 }
 
 td.nowrap {
