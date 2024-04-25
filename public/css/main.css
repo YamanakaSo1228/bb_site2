@@ -7,6 +7,27 @@ img {
   /* vertical-align: middle; */
   width: 100%;
 }
+img.baseball-boy {
+  background-color: white;
+}
+
+.back-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* 他の要素よりも上に表示するために z-index を指定 */
+  filter: blur(5px); /* ぼかしの強度を調整するには値を変更してください */
+  background-size: cover; /* 背景画像を要素のサイズに合わせてカバーする */
+  opacity: 0.6;
+}
+
+.main-image {
+  width: 80%;
+  z-index: 2; /* .back-image よりも前面に表示するために z-index を指定 */
+}
+
 
 /*FontAwesomeを使用しています。*/
 .header-7 {
@@ -231,6 +252,7 @@ button.btn.btn-primary.edit-link {
   margin-top: 20%;
   background: #ffffff80;
   margin-left: 0px;
+  z-index: 3; /* .main-image よりも前面に表示するために z-index を指定 */
 }
 
 .sp-image-text {

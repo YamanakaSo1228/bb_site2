@@ -2,21 +2,25 @@
 @section('title','ホーム')
 @section('content')
 <link rel="stylesheet" href="{{ asset('/css/notice.css') }}">
-<div class="position-relative d-flex justify-content-center">
-  <img src="{{ asset('images/DSC00784.JPG') }}" alt="画像" class="home-image">
+<div class="position-relative">
+<img class="back-image" src="{{ asset('/images/08295B93-2BE7-417C-AA71-308DE19DA172_1_105_c.jpeg') }}" alt="画像">
+  <div class="d-flex justify-content-center">
+    <img class="main-image" src="{{ asset('images/08295B93-2BE7-417C-AA71-308DE19DA172_1_105_c.jpeg') }}" alt="画像">
+  </div>
   <div class="image-text position-absolute top-50 start-50 translate-middle text-center">
     <h2>BLUEHEARTは幅広い年齢を大歓迎いたします！！</h2>
     <p>
-      テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト
+      テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト
     </p>
   </div>
 </div>
 <div class="sp-image-text">
   <h2>BLUEHEARTは幅広い年齢を大歓迎いたします！！</h2>
   <p>
-    テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト
+    テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト
   </p>
 </div>
+
 <!-- <div class="d-flex justify-content-center">
     <img src="{{ asset('images/1000_F_243881132_TKKo6WJMNkU1fe23ZEcKbqAIXvlC7OOQ.jpg') }}" alt="画像"> -->
 

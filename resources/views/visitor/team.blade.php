@@ -9,7 +9,7 @@
 <!--左から吹き出し-->
 <div class="talk">
   <figure class="talk-Limg">
-    <img src="{{ asset('images/hearts_blue.jpg') }}" alt="画像名" />
+    <img class="baseball-boy" src="{{ asset('images/baseball_boy_14671.png') }}" alt="画像名" />
     <figcaption class="talk-imgname">球児くん</figcaption>
   </figure>
   <div class="talk-Ltxt">
@@ -23,7 +23,7 @@
 <!--右から吹き出し-->
 <div class="talk">
   <figure class="talk-Rimg">
-    <img src="{{ asset('images/hearts_blue.jpg') }}" alt="画像名" />
+    <img src="{{ asset('images/8DDB6675-010D-46E8-B96F-0699CD951AD6_1_201_a.jpeg') }}" alt="画像名" />
     <figcaption class="talk-imgname">NAME</figcaption>
   </figure>
   <div class="talk-Rtxt">
@@ -37,7 +37,7 @@
 
 <div class="talk">
   <figure class="talk-Limg">
-    <img src="{{ asset('images/hearts_blue.jpg') }}" alt="画像名" />
+    <img class="baseball-boy" src="{{ asset('images/baseball_boy_14671.png') }}" alt="画像名" />
     <figcaption class="talk-imgname">NAME</figcaption>
   </figure>
   <div class="talk-Ltxt">
@@ -51,7 +51,7 @@
 <!--右から吹き出し-->
 <div class="talk">
   <figure class="talk-Rimg">
-    <img src="{{ asset('images/hearts_blue.jpg') }}" alt="画像名" />
+    <img src="{{ asset('images/8DDB6675-010D-46E8-B96F-0699CD951AD6_1_201_a.jpeg') }}" alt="画像名" />
     <figcaption class="talk-imgname">NAME</figcaption>
   </figure>
   <div class="talk-Rtxt">
