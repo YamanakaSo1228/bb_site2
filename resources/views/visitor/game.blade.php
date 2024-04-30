@@ -39,9 +39,9 @@
 }
 </style>
 <div class="result-image">
-  <img src="{{ asset('images/5A962AD8-4680-4819-82D0-EE1C7ECA8CD2_1_105_c.jpeg') }}" alt="画像">
+  <img src="{{ asset('images/B3F5F17E-D5CD-417F-A46C-F43E607A9859_1_201_a.jpeg') }}" alt="画像">
   <div class="result-text">
-    <h1 class="text-center">試合結果一覧</h1>
+    <h1 class="text-center">試合結果</h1>
   </div>
 </div>
 <div class="container game-result">

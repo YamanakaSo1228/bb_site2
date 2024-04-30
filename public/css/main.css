@@ -1,7 +1,4 @@
-p {
-  /* 全ての改行を表示 */
-  white-space: pre-wrap !important;
-}
+
 
 img {
   /* vertical-align: middle; */
@@ -446,7 +443,8 @@ body {
   }
   .result-image img {
     height: 400px;
-}
+    object-fit: cover;
+  }
 
 }
 

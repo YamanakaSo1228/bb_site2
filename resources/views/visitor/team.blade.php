@@ -66,7 +66,7 @@
 </div>
 
 <div class="container">
-  <h1 class="heading-013"> BLUE HERTS</h1>
+  <h1 class="heading-013"> BLUE HEARTS</h1>
 
   @if(isset($team[0]))
     <h2 class="team-title">{{ $team[0]->team_title }}</h2>
