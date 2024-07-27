@@ -121,6 +121,11 @@
 
 
   <style>
+    .notice-item:hover {
+        background-color: #e2e6ea; /* カーソルを合わせたときの背景色 */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* ホバー時の縁取りの効果 */
+    }
+
     .notice {
       text-align: center;
       margin-top: 20px;
@@ -131,6 +136,8 @@
       padding: 20px;
       margin-bottom: 20px;
       background-color: #f8f9fa;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* 縁取りの効果をさらに濃くする */
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .notice-title {

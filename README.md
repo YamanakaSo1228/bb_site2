@@ -126,6 +126,7 @@ BattingRecordSeeder クラスが PSR-4 のオートロード規約に準拠し�
 
 これらの問題に対処すると、メッセージが解消され、問題が解決されるはずです。
 
-ln -s /home/bluehearts/bb_site2 /home/bluehearts/www（ご自分で決めてください）
+・チーム紹介の画像崩れ
+・その他デザイン修正箇所あれば
 
-cp -r /home/bluehearts/bb_site2/. /home/bluehearts/www/bluehearts
+上記問題なければ、今回の改修で追加したカラムをテーブル定義署に更新する
